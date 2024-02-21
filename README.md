@@ -122,7 +122,3 @@ Server Side
 ```
 $ npm start
 ```
-## Authors
-- [Suman Sourav Biswal](https://github.com/SouravBiswal)
-- [Swagat Satprem Jena](https://github.com/Swagat-Satprem-Jena)
-- [Somya Subham Dash](https://github.com/somyasubham9)
