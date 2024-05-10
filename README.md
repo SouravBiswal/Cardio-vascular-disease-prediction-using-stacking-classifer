@@ -87,7 +87,7 @@ Model performance was evaluated using `AUC ROC` as the scoring metric and Repeat
 |    DecisionTree       |  90.0 ± 2.4 |
 |    GaussianNB         |  91.3 ± 2.5 |
 |    LogisticRegression |  91.1 ± 2.5 |
-|    Stacked Ensemble   |  93.3 ± 2.1 |
+|    Stacked Ensemble   |  94.3 ± 1.8 |
  
 
 ## Technology Stack:
