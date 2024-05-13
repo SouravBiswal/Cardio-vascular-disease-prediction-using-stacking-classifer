@@ -84,7 +84,7 @@ Model performance was evaluated using `AUC ROC` as the scoring metric and Repeat
 |    XGBClassifier      |    92.7     |
 |    CatBoostClassifier |    93.2     |
 |    AdaBoostClassifier |    91.6     |
-|    DecisionTree       |    90.0     |
+|    DecisionTree       |    88.3     |
 |    GaussianNB         |    89.9     |
 |    LogisticRegression |    88.3     |
 |    Stacked Ensemble   |    93.7     |
