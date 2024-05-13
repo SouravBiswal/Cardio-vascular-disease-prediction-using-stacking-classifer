@@ -56,9 +56,9 @@ Models trained in order along with optimal hyperparameters :-
                                      learning_rate_init = 0.0001,
                                      max_iter = 500,solver = 'adam')
                                      
-4. RandomForestClassifier(n_estimators = 150, max_features = 'auto', max_depth = 6, criterion = 'entropy')
+4. RandomForestClassifier(n_estimators = 150, max_features = 'auto', max_depth = 4, criterion = 'entropy')
 5. XGBClassifier(n_estimators = 250, subsample = 0.8, min_child_weight = 1, max_depth = 3, gamma = 1.5, learning_rate = 0.02)
-6. CatBoostClassifier(n_estimators = 300, depth = 6, l2_leaf_reg = 1, learning_rate = 0.03, verbose = False)
+6. CatBoostClassifier(n_estimators = 200, depth = 4, l2_leaf_reg = 1, learning_rate = 0.03, verbose = False)
 7. AdaBoostClassifier(n_estimators = 300, learning_rate = 0.03, algorithm = 'SAMME.R')
 8. DecisionTreeClassifier(criterion='entropy', max_depth=5, min_samples_leaf=10,random_state=42)
 9. GaussianNB(var_smoothing = 0.0015199110829529332)
@@ -66,10 +66,10 @@ Models trained in order along with optimal hyperparameters :-
 ```
 Thereafter, the probablities values for each classes were fed as input to the meta-model
  ```python
- final_estimator = GaussianNB(var_smoothing = 0.0015199110829529332)
+ final_estimator = CatBoostClassifier(n_estimators = 300, depth = 6, l2_leaf_reg = 1, learning_rate = 0.03, verbose = False)
  model = StackingClassifier(estimators=level0, final_estimator, stack_method = 'predict_proba', passthrough = True)
  ```
- > Surprisingly a simple model like Gaussian Naive Bayes worked very well as the final estimator, we believe it can be tuned further!
+ > The meta-model can perform ever better, we believe it can be tuned further!
  
 ## Model Performance
 Model performance was evaluated using `AUC ROC` as the scoring metric and RepeatedStratifiedKFold Cross-validation scheme
@@ -77,22 +77,22 @@ Model performance was evaluated using `AUC ROC` as the scoring metric and Repeat
 
 |      Model            |  AUC ROC (%)|
 |-----------------------|-------------|
-|        SVC            |  91.1 ± 2.5 |
-|    KNeighbors         |  92.3 ± 2.3 |
-|    MLPClassifier      |  92.3 ± 2.3 |
-|    RandomForest       |  93.1 ± 2.1 |
-|    XGBClassifier      |  93.6 ± 2.0 |
-|    CatBoostClassifier |  93.2 ± 1.9 |
-|    AdaBoostClassifier |  92.6 ± 2.3 |
-|    DecisionTree       |  90.0 ± 2.4 |
-|    GaussianNB         |  91.3 ± 2.5 |
-|    LogisticRegression |  91.1 ± 2.5 |
-|    Stacked Ensemble   |  94.3 ± 1.8 |
+|        SVC            |    89.2     |
+|    KNeighbors         |    93.4     |
+|    MLPClassifier      |    92.1     |
+|    RandomForest       |    93.2     |
+|    XGBClassifier      |    92.7     |
+|    CatBoostClassifier |    93.2     |
+|    AdaBoostClassifier |    91.6     |
+|    DecisionTree       |    90.0     |
+|    GaussianNB         |    89.9     |
+|    LogisticRegression |    88.3     |
+|    Stacked Ensemble   |    93.7     |
  
 
 ## Technology Stack:
 
-ML: sklearn, pandas, numpy, matplotlib, mlxtend
+ML: sklearn, pandas, numpy, matplotlib
 
 Client: React,CSS,React-Router
 
